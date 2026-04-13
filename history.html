@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>История колледжа - Музей Колледжа</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <nav class="container header-content">
+      <div class="logo">🏛️ Музей Колледжа</div>
+      <ul class="nav">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="exhibits.html">Экспонаты</a></li>
+        <li><a href="history.html">История</a></li>
+        <li><a href="about.html">О музее</a></li>
+      </ul>
+      <div class="user-actions">
+        <div class="user-menu" style="display: flex; gap: 1rem;">
+          <a href="login.html" class="btn btn-outline">Войти</a>
+          <a href="register.html" class="btn btn-primary">Регистрация</a>
+        </div>
+        <div class="profile-menu" style="display: none;">
+          <span class="user-name"></span>
+          <button id="logout-btn" class="btn btn-outline">Выход</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 style="color: var(--text-heading); text-align: center; margin: 3rem 0 2rem;">История колледжа</h1>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Год основания</h3>
+          <p>Основание учебного заведения. Первые дипломы.</p>
+          <a href="exhibits.html">Экспонаты этого периода (5)</a>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Год события</h3>
+          <p>Описание события</p>
+          <a href="exhibit.html?id=5">Экспонаты этого периода (8)</a>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>1991</h3>
+          <p>Переход к новой системе образования.</p>
+          <a href="exhibits.html">Экспонаты этого периода (15)</a>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2026</h3>
+          <p>Создание виртуального музея.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <h3>Музей Колледжа</h3>
+        <p>г. Барнаул, ул. Горно-Алтайская, 17</p>
+      </div>
+      <div>
+        <h4>Навигация</h4>
+        <ul style="list-style: none;">
+          <li><a href="index.html" style="color: white;">Главная</a></li>
+          <li><a href="exhibits.html" style="color: white;">Экспонаты</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <p>Тел: +7 (XXX) XXX-XX-XX</p>
+        <p>Email: museum@college.ru</p>
+      </div>
+    </div>
+    <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2);">
+      <p>&copy; 2026 Музей Колледжа. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
