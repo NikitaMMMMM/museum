@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('head')
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная - Музей Колледжа</title>
 @endsection
 
@@ -11,17 +9,19 @@
     <section class="hero">
         <h1>Виртуальный музей колледжа</h1>
         <p>Погрузитесь в историю через подлинные экспонаты</p>
-        <a href="exhibits.html" class="btn btn-primary">Перейти к экспозиции</a>
+        <a href="{{ route('pages.exhibits') }}" class="btn btn-primary">Перейти к экспозиции</a>
     </section>
 
     <!-- О музее -->
     <section>
-        <div class="museum-card">
-            <div class="card-content">
-                <h2 style="color: var(--text-heading); margin-bottom: 1rem;">О музее</h2>
-                <p>Коллекция насчитывает более 500 подлинных экспонатов, отражающих историю колледжа. И тд...</p>
+        <a href="{{ route('pages.about') }}" style="text-decoration: none; color: inherit;">
+            <div class="museum-card">
+                <div class="card-content">
+                    <h2 style="color: var(--text-heading); margin-bottom: 1rem;">О музее</h2>
+                    <p>Коллекция насчитывает более 500 подлинных экспонатов, отражающих историю колледжа. И тд...</p>
+                </div>
             </div>
-        </div>
+        </a>
     </section>
 
     <!-- Новости -->
@@ -120,14 +120,14 @@
                 const card = document.createElement('div');
                 card.className = 'museum-card';
                 card.innerHTML = `
-                  <div class="card-img">${newsItem.img}</div>
-                  <div class="card-content">
-                    <h3 class="card-title">${newsItem.title}</h3>
-                    <div class="card-meta">${newsItem.date}</div>
-                    <p style="color: var(--text-muted); margin: 0.5rem 0;">${newsItem.excerpt}</p>
-                    <a href="#" style="display: block; margin-top: 1rem; color: var(--color-action-blue); font-weight: 500;">Читать полностью →</a>
-                  </div>
-                `;
+                      <div class="card-img">${newsItem.img}</div>
+                      <div class="card-content">
+                        <h3 class="card-title">${newsItem.title}</h3>
+                        <div class="card-meta">${newsItem.date}</div>
+                        <p style="color: var(--text-muted); margin: 0.5rem 0;">${newsItem.excerpt}</p>
+                        <a href="#" style="display: block; margin-top: 1rem; color: var(--color-action-blue); font-weight: 500;">Читать полностью →</a>
+                      </div>
+                    `;
                 grid.appendChild(card);
             });
         });

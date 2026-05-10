@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Маршрутизация
 Route::get('/', fn () => view('pages.index'))->name('pages.index');
-Route::get('/about', fn () => view('pages.about'));
+Route::get('/about', fn () => view('pages.about'))->name('pages.about');
 Route::get('/exhibits', fn () => view('pages.exhibits'))->name('pages.exhibits');
 Route::get('/exhibit', fn () => view('pages.exhibit'))->name('pages.exhibit');
 Route::get('/history', fn () => view('pages.history'))->name('pages.history');

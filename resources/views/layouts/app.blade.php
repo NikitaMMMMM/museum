@@ -16,11 +16,10 @@
 	<main class="container">
 		@yield('content')
 	</main>
-
+	
 	@yield('footer')
 
 	@yield('scripts')
-	<script src="js/app.js"></script>
 </body>
 
 </html>
