@@ -17,9 +17,7 @@
 		@yield('content')
 	</main>
 
-	@('footer')
-	@include('partials.site-footer')
-	@show
+	@yield('footer')
 
 	@yield('scripts')
 	<script src="js/app.js"></script>
