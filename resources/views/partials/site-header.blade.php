@@ -12,7 +12,7 @@
         <div class="user-actions">
             <div class="user-menu" style="display: flex; gap: 1rem;">
                 <a href="{{ route('pages.login') }}" class="btn btn-outline">Войти</a>
-                <a href="{{ route('pages.register') }}" class="btn btn-primary">Регистрация</a>
+                <a href="{{ route('register.show') }}" class="btn btn-primary">Регистрация</a>
             </div>
             
             <div class="profile-menu" style="display: none;">
