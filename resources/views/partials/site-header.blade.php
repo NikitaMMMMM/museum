@@ -11,10 +11,18 @@
 
         <div class="user-actions">
             <div class="user-menu" style="display: flex; gap: 1rem;">
-                <a href="{{ route('pages.login') }}" class="btn btn-outline">Войти</a>
-                <a href="{{ route('register.show') }}" class="btn btn-primary">Регистрация</a>
+                @if (Auth::check())
+                    <form action="{{ route('auth.logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Выйти</button>
+                    </form>
+                    <a href="{{ route('auth.profile') }}" class="btn btn-primary">Личный кабинет</a>
+                @else
+                    <a href="{{ route('pages.login') }}" class="btn btn-outline">Войти</a>
+                    <a href="{{ route('register.show') }}" class="btn btn-primary">Регистрация</a>
+                @endif
             </div>
-            
+
             <div class="profile-menu" style="display: none;">
                 <span class="user-name"></span>
                 <button id="logout-btn" class="btn btn-outline">Выход</button>

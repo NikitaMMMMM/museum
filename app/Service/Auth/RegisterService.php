@@ -5,7 +5,6 @@ namespace App\Service\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Laravel\Sanctum\NewAccessToken;
 
 class RegisterService
 {
@@ -17,6 +16,7 @@ class RegisterService
             'password' => Hash::make($data['password']),
             'slug' => $this->generateUniqueSlug($data['name']),
             'role' => 'visitor',
+            'avatar_url' => $data['avatar_url'] ?? null,
         ];
 
         $user = User::create($userData);

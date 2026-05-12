@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\UploadedFile;
+
 
 class RegisterController extends BaseController
 {
@@ -16,27 +17,33 @@ class RegisterController extends BaseController
         return view('pages.register');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(RegisterRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Password::min(8)->mixedCase()->numbers()],
-            'agree_terms' => ['accepted', 'required'],
-        ]);
+        
+        $data = $request->validated();
 
         try {
-            $result = $this->service->registerUser($validated);
-            dd($request);
+            $avatarUrl = null;
+            if ($request->hasFile('avatar_url')) {
+                $file = $request->file('avatar_url');
+                if ($file instanceof UploadedFile) {
+                    $path = $file->storePublicly('avatars', 'public');
+                    $avatarUrl = $path ? 'storage/' . $path : null;
+                }
+            }
+
+            $data['avatar_url'] = $avatarUrl;
+            $result = $this->service->registerUser($data);
+
             Auth::login($result['user']);
 
-            return redirect()->intended('/profile')
-                ->with('успешно', 'Вы успешно зарегистрированы!');
+            return redirect()->route('auth.profile');
 
         } catch (\Exception $e) {
-            \Log::error('Сетевая ошибка: ' . $e->getMessage());
+            \Log::error('Ошибка регистрации: ' . $e->getMessage());
             return back()->withErrors(['error' => 'Не удалось завершить регистрацию. Попробуйте позже.'])
-                ->withInput();
+                ->withInput()
+                ->with('success', 'Регистрация прошла успешно!');
         }
     }
 }

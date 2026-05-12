@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\Requests\Auth\RegisterRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 
 class RegisterController extends BaseController
@@ -13,12 +11,7 @@ class RegisterController extends BaseController
     public function register(RegisterRequest $request): JsonResponse
     {
         try {
-            $validated = $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'confirmed', Password::min(8)->mixedCase()->numbers()],
-                'agree_terms' => ['accepted'],
-            ]);
+            $validated = $request->validated();
 
             $result = $this->service->registerUser($validated);
 

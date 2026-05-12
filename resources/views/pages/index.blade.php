@@ -91,7 +91,7 @@
         <div style="background: var(--bg-secondary); padding: 3rem; border-radius: var(--radius); text-align: center;">
             <h2 style="color: var(--text-heading);">История колледжа</h2>
             <p>От основания до наших дней</p>
-            <a href="history.html" class="btn btn-primary">Узнать больше</a>
+            <a href="{{ route('pages.history') }}" class="btn btn-primary">Узнать больше</a>
         </div>
     </section>
 
@@ -101,8 +101,8 @@
         <h2 style="color: var(--text-heading);">Сохраняйте экспонаты в избранное</h2>
         <p>Войдите или зарегистрируйтесь для доступа к личному кабинету</p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="login.html" class="btn btn-primary">Войти</a>
-            <a href="register.html" class="btn btn-outline">Регистрация</a>
+            <a href="{{ route('pages.login') }}" class="btn btn-primary">Войти</a>
+            <a href="{{ route('register.show') }}" class="btn btn-outline">Регистрация</a>
         </div>
     </section>
 @endsection
