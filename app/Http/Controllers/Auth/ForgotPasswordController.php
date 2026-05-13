@@ -25,12 +25,9 @@ class ForgotPasswordController extends Controller
             'email.email' => 'Введите корректный email адрес.',
         ]);
 
-        // Логика восстановления пароля в Laravel использует reset-токены в таблице `password_reset_tokens`.
-        // Добавлять `_token` вручную нельзя: это приведёт к попытке поиска пользователя по полю `_token`.
         $status = Password::sendResetLink(
             $request->only('email')
         );
-
 
         return back()->with('status', __($status));
     }

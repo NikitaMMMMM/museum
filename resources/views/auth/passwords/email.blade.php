@@ -8,7 +8,7 @@
     <h2 style="text-align:center; color: var(--text-heading); margin-bottom: 2rem;">Восстановление пароля</h2>
 
     @if (session('status'))
-        <div style="margin-bottom: 1rem; color: var(--text-success);">{{ session('status') }}</div>
+        <div style="margin-bottom: 1rem; color: var(--text-success);">{{ __('Восстановление ссылки отправлено.') }}</div>
     @endif
 
     <form class="auth-form" method="POST" action="{{ route('password.email') }}">
