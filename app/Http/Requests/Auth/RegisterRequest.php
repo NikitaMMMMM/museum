@@ -41,7 +41,7 @@ class RegisterRequest extends FormRequest
             'password' => [
                 'required',
                 'confirmed',
-                Password::min(8)->mixedCase()->numbers()->symbols()
+                Password::min(8)->letters()->numbers()->symbols()
             ],
             'agreement' => ['accepted', 'required'],
         ];
@@ -67,7 +67,7 @@ class RegisterRequest extends FormRequest
             'password.required' => 'Поле "Пароль" обязательно для заполнения.',
             'password.confirmed' => 'Пароли не совпадают.',
             'password.min' => 'Пароль должен содержать минимум 8 символов.',
-            'password.mixed_case' => 'Пароль должен содержать буквы.', 
+            'password.letters' => 'Пароль должен содержать буквы.', 
             'password.numbers' => 'Пароль должен содержать хотя бы одну цифру.',
             'password.symbols' => 'Пароль должен содержать хотя бы один специальный символ.',
 

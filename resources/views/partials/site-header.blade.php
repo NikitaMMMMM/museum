@@ -1,10 +1,10 @@
 <header>
     <nav class="container header-content">
-        <div class="logo">🏛️ Музей Колледжа</div>
+        <div class="logo">Музей Колледжа</div>
 
         <ul class="nav">
             <li><a href="{{ route('pages.index') }}">Главная</a></li>
-            <li><a href="{{ route('pages.exhibits') }}">Экспонаты</a></li>
+            <li><a href="{{ route('exhibits.index') }}">Экспонаты</a></li>
             <li><a href="{{ route('pages.history') }}">История</a></li>
             <li><a href="{{ route('pages.about') }}">О музее</a></li>
         </ul>
@@ -18,14 +18,9 @@
                     </form>
                     <a href="{{ route('auth.profile') }}" class="btn btn-primary">Личный кабинет</a>
                 @else
-                    <a href="{{ route('pages.login') }}" class="btn btn-outline">Войти</a>
+                    <a href="{{ route('login') }}" class="btn btn-outline">Войти</a>
                     <a href="{{ route('register.show') }}" class="btn btn-primary">Регистрация</a>
                 @endif
-            </div>
-
-            <div class="profile-menu" style="display: none;">
-                <span class="user-name"></span>
-                <button id="logout-btn" class="btn btn-outline">Выход</button>
             </div>
         </div>
     </nav>

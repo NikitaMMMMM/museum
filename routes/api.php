@@ -14,5 +14,3 @@ Route::middleware('auth:sanctum')->group(function () {
     //     return response()->json(['message' => 'Успешный выход']);
     // });
 });
-
-// Route::get('/profile', fn () => view('pages.profile'))->name('pages.profile');

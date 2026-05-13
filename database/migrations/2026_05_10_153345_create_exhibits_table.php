@@ -19,7 +19,7 @@ return new class extends Migration {
                 ->comment('Название экспоната');
             $table->string('slug', 255)->unique()
                 ->comment('URL-friendly название');
-            $table->string('short-description')->nullable()
+            $table->string('short_description')->nullable()
                 ->comment('Короткое описание для карточки');
             $table->text('description')->nullable()
                 ->comment('Подробное описание');
@@ -44,7 +44,6 @@ return new class extends Migration {
             $table->timestamps();
 
             $table->index('year_created');
-            $table->index('inventory_number');
             $table->fullText(['title', 'description']);
         });
     }

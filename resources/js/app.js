@@ -1,1 +1,1 @@
-console.log('Vite работает!');
+import 'bootstrap';

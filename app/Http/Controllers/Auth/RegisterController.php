@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\UploadedFile;
 
@@ -14,12 +13,11 @@ class RegisterController extends BaseController
 {
     public function show(): View
     {
-        return view('pages.register');
+        return view('auth.register');
     }
 
     public function store(RegisterRequest $request): RedirectResponse
     {
-        
         $data = $request->validated();
 
         try {
@@ -35,15 +33,18 @@ class RegisterController extends BaseController
             $data['avatar_url'] = $avatarUrl;
             $result = $this->service->registerUser($data);
 
-            Auth::login($result['user']);
+            Auth::login($result);
+
+            if (!$result->hasVerifiedEmail()) {
+                $result->sendEmailVerificationNotification();
+            }
 
             return redirect()->route('auth.profile');
 
         } catch (\Exception $e) {
             \Log::error('Ошибка регистрации: ' . $e->getMessage());
             return back()->withErrors(['error' => 'Не удалось завершить регистрацию. Попробуйте позже.'])
-                ->withInput()
-                ->with('success', 'Регистрация прошла успешно!');
+                ->withInput();
         }
     }
 }

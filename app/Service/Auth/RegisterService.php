@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class RegisterService
 {
-    public function registerUser(array $data): array
+    public function registerUser(array $data): User
     {
         $userData = [
             'name' => $data['name'],
@@ -16,18 +16,13 @@ class RegisterService
             'password' => Hash::make($data['password']),
             'slug' => $this->generateUniqueSlug($data['name']),
             'role' => 'visitor',
+            'last_login' => now()->toDate(),
             'avatar_url' => $data['avatar_url'] ?? null,
         ];
-
+        
         $user = User::create($userData);
 
-        $tokenName = 'mobile-app-' . now()->timestamp;
-        $token = $user->createToken($tokenName);
-
-        return [
-            'user' => $user,
-            'token' => $token->plainTextToken,
-        ];
+        return  $user;
     }
 
     private function generateUniqueSlug(string $name): string

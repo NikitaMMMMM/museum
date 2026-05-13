@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Экспонаты - Музей Колледжа</title>
-    <link rel="stylesheet" href="css/styles.css">
 @endsection
 
 @section('content')
@@ -30,7 +27,23 @@
         </div>
     </div>
 
-    <div class="grid" id="exhibits-grid"></div>
+    <div class="grid" id="exhibits-grid">
+        @foreach ($exhibits as $exhibit)
+            <pre>
+                {{ $exhibit }}
+            </pre>
+        @endforeach
+        <div class="card-img"><img src="" alt=""></div>
+
+        <div class="card-content">
+            <h3 class="card-title">{{ $exhibit->title }}</h3>
+
+            <div class="card-meta">${exhibit.year} год • ${exhibit.category}</div>
+            <button class="btn btn-favorite" data-id="${exhibit.id}">☆</button>
+            <a href="exhibit.html?id=${exhibit.id}" class="btn btn-primary"
+                style="margin-top: 1rem; width: 100%;">Подробнее</a>
+        </div>
+    </div>
 
     <div style="text-align: center; margin: 3rem 0;">
         <div style="display: inline-flex; gap: 0.5rem; align-items: center;">
@@ -50,14 +63,14 @@
                 const card = document.createElement('div');
                 card.className = 'museum-card';
                 card.innerHTML = `
-              <div class="card-img">📷 ${exhibit.category}</div>
-              <div class="card-content">
-                <h3 class="card-title">${exhibit.title}</h3>
-                <div class="card-meta">${exhibit.year} год • ${exhibit.category}</div>
-                <button class="btn btn-favorite" data-id="${exhibit.id}">☆</button>
-                <a href="exhibit.html?id=${exhibit.id}" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Подробнее</a>
-              </div>
-            `;
+                  <div class="card-img">📷 ${exhibit.category}</div>
+                  <div class="card-content">
+                    <h3 class="card-title">${exhibit.title}</h3>
+                    <div class="card-meta">${exhibit.year} год • ${exhibit.category}</div>
+                    <button class="btn btn-favorite" data-id="${exhibit.id}">☆</button>
+                    <a href="exhibit.html?id=${exhibit.id}" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Подробнее</a>
+                  </div>
+                `;
                 grid.appendChild(card);
             });
             app.updateFavorites();

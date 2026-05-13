@@ -48,8 +48,10 @@
             <div class="form-group">
                 <label for="reg-password">Пароль *</label>
                 <input type="password" id="reg-password" name="password" required minlength="8"
-                    placeholder="Минимум 8 символов" class="@error('email') is-invalid @enderror" value="{{ old('password') }}">
-                <small style="font-size: 11px; color: var(--text-muted);">Латиница, цифры, заглавные буквы, спец. символы</small>
+                    placeholder="Минимум 8 символов" class="@error('email') is-invalid @enderror"
+                    value="{{ old('password') }}">
+                <small style="font-size: 11px; color: var(--text-muted);">Латиница, цифры, заглавные буквы, спец.
+                    символы</small>
 
                 @error('password')
                     <div class="error" style="color: red; font-size: 13px;">{{ $message }}</div>
@@ -74,7 +76,8 @@
             </div>
 
             @error('agreement')
-                <div class="error" style="text-align: center; color: red; font-size: 13px; margin-bottom: 1rem;">{{ $message }}
+                <div class="error" style="text-align: center; color: red; font-size: 13px; margin-bottom: 1rem;">
+                    {{ $message }}
                 </div>
             @enderror
 
@@ -93,7 +96,7 @@
             @endif
 
             <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted);">
-                Уже есть аккаунт? <a href="{{ route('pages.login') }}" style="color: var(--color-action-blue);">Войти</a>
+                Уже есть аккаунт? <a href="{{ route('login') }}" style="color: var(--color-action-blue);">Войти</a>
             </p>
         </form>
     </div>

@@ -9,7 +9,7 @@
     <section class="hero">
         <h1>Виртуальный музей колледжа</h1>
         <p>Погрузитесь в историю через подлинные экспонаты</p>
-        <a href="{{ route('pages.exhibits') }}" class="btn btn-primary">Перейти к экспозиции</a>
+        <a href="{{ route('exhibits.index') }}" class="btn btn-primary">Перейти к экспозиции</a>
     </section>
 
     <!-- О музее -->
@@ -101,7 +101,7 @@
         <h2 style="color: var(--text-heading);">Сохраняйте экспонаты в избранное</h2>
         <p>Войдите или зарегистрируйтесь для доступа к личному кабинету</p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="{{ route('pages.login') }}" class="btn btn-primary">Войти</a>
+            <a href="{{ route('login') }}" class="btn btn-primary">Войти</a>
             <a href="{{ route('register.show') }}" class="btn btn-outline">Регистрация</a>
         </div>
     </section>

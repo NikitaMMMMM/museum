@@ -1,4 +1,3 @@
-{{-- NOTE: convert to Blade if you include this partial with @include('partials.site-footer') --}}
 <footer>
     <div class="container footer-content">
         <div>
@@ -8,8 +7,8 @@
         <div>
             <h4>Навигация</h4>
             <ul style="list-style: none;">
-                <li><a href="index.html" style="color: white;">Главная</a></li>
-                <li><a href="exhibits.html" style="color: white;">Экспонаты</a></li>
+                <li><a href="{{ route('pages.index') }}" style="color: white;">Главная</a></li>
+                <li><a href="{{ route('exhibits.index') }}" style="color: white;">Экспонаты</a></li>
             </ul>
         </div>
         <div>

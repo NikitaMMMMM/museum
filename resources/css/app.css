@@ -1,3 +1,5 @@
+@import 'bootstrap/dist/css/bootstrap.css';
+
 /* Museum Style Guide CSS */
 :root {
     /* Brand Colors */
@@ -104,15 +106,6 @@ header {
     display: inline-block;
 }
 
-.btn-primary {
-    background: var(--color-action-blue);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: #2a5bd6;
-}
-
 .btn-outline {
     background: transparent;
     color: var(--color-action-blue);
@@ -164,12 +157,6 @@ header {
     border-radius: var(--radius);
     box-shadow: var(--shadow-card);
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.museum-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
 }
 
 .card-img {
@@ -201,7 +188,7 @@ header {
 /* Grid */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin: 2rem 0;
 }
@@ -258,15 +245,6 @@ header {
 .profile-nav a.active {
     background: var(--bg-secondary);
     color: var(--color-action-blue);
-}
-
-/* Tabs */
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
 }
 
 /* Footer */

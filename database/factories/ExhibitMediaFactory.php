@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Exhibit_media;
+use App\Models\ExhibitMedia;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Exhibit_media>
+ * @extends Factory<ExhibitMedia>
  */
 class ExhibitMediaFactory extends Factory
 {
