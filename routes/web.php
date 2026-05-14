@@ -38,15 +38,23 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::prefix('exhibits')->name('exhibits.')->middleware('auth')->group(function () {
+Route::prefix('exhibits')->name('exhibits.')->group(function () {
+    // index должен быть доступен всем (и авторизованным, и неавторизованным)
     Route::get('/', IndexController::class)->name('index');
-    Route::get('/create', CreateController::class)->name('create');
-    Route::post('/', StoreController::class)->name('store');
+
+    // просмотр карточки (если нужно) тоже доступен всем
     Route::get('/{slug}', ShowController::class)->name('show');
-    Route::get('/{slug}/edit', EditController::class)->name('edit');
-    Route::patch('/{slug}', UpdateController::class)->name('update');
-    Route::delete('/{slug}', DestroyController::class)->name('destroy');
+
+    // действия, которые требуют авторизации
+    Route::middleware('auth')->group(function () {
+        Route::get('/create', CreateController::class)->name('create');
+        Route::post('/', StoreController::class)->name('store');
+        Route::get('/{slug}/edit', EditController::class)->name('edit');
+        Route::patch('/{slug}', UpdateController::class)->name('update');
+        Route::delete('/{slug}', DestroyController::class)->name('destroy');
+    });
 });
+
 
 Route::middleware('web')->group(function () {
     Route::get('/register', [RegisterController::class, 'show'])->name('register.show');
